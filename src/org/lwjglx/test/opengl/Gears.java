@@ -37,6 +37,7 @@ package org.lwjglx.test.opengl;
 
 import java.nio.FloatBuffer;
 
+import org.lwjgl.Version;
 import org.lwjglx.BufferUtils;
 import org.lwjglx.LWJGLException;
 import org.lwjglx.LWJGLUtil;
@@ -202,7 +203,7 @@ public class Gears {
 
 		glMatrixMode(GL_PROJECTION);
 
-		System.err.println("LWJGL: " + Sys.getVersion() + " / " + LWJGLUtil.getPlatformName());
+		System.err.println("LWJGL: " + Version.getVersion() + " / " + LWJGLUtil.getPlatformName());
 		System.err.println("GL_VENDOR: " + glGetString(GL_VENDOR));
 		System.err.println("GL_RENDERER: " + glGetString(GL_RENDERER));
 		System.err.println("GL_VERSION: " + glGetString(GL_VERSION));

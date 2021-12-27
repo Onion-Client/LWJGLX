@@ -71,22 +71,22 @@ public class Display {
 		desktopDisplayMode = new DisplayMode(monitorWidth, monitorHeight, monitorBitPerPixel, monitorRefreshRate);
 	}
 	
-	public static void create(PixelFormat pixel_format, Drawable shared_drawable) throws LWJGLException {
+	public static void create(PixelFormat pixel_format, Drawable shared_drawable) {
 		System.out.println("TODO: Implement Display.create(PixelFormat, Drawable)"); // TODO
 		create();
 	}
 	
-	public static void create(PixelFormat pixel_format, ContextAttribs attribs) throws LWJGLException {
+	public static void create(PixelFormat pixel_format, ContextAttribs attribs) {
 		System.out.println("TODO: Implement Display.create(PixelFormat, ContextAttribs)"); // TODO
 		create();
 	}
 	
-	public static void create(PixelFormat pixel_format) throws LWJGLException {
+	public static void create(PixelFormat pixel_format) {
 		System.out.println("TODO: Implement Display.create(PixelFormat)"); // TODO
 		create();
 	}
 	
-	public static void create() throws LWJGLException {
+	public static void create() {
 		long monitor = glfwGetPrimaryMonitor();
 		GLFWVidMode vidmode = glfwGetVideoMode(monitor);
 
@@ -280,13 +280,8 @@ public class Display {
 	}
 	
 	public static void update(boolean processMessages) {
-		try {
-			swapBuffers();
-			displayDirty = false;
-		}
-		catch (LWJGLException e) {
-			throw new RuntimeException(e);
-		}
+		swapBuffers();
+		displayDirty = false;
 		
 		if (processMessages) processMessages();
 	}
@@ -307,7 +302,7 @@ public class Display {
 		}
 	}
 	
-	public static void swapBuffers() throws LWJGLException {
+	public static void swapBuffers() {
 		glfwSwapBuffers(Window.handle);
 	}
 	
@@ -323,7 +318,7 @@ public class Display {
 		displayCreated = false;
 	}
 	
-	public static void setDisplayMode(DisplayMode dm) throws LWJGLException {
+	public static void setDisplayMode(DisplayMode dm) {
 		mode = dm;
 	}
 	
@@ -331,7 +326,7 @@ public class Display {
 		return mode;
 	}
 	
-	public static DisplayMode[] getAvailableDisplayModes() throws LWJGLException {
+	public static DisplayMode[] getAvailableDisplayModes() {
 		IntBuffer count = BufferUtils.createIntBuffer(1);
 		GLFWVidMode.Buffer modes = GLFW.glfwGetVideoModes(glfwGetPrimaryMonitor());
 
@@ -416,12 +411,12 @@ public class Display {
 		return displayResizable;
 	}
 	
-	public static void setDisplayModeAndFullscreen(DisplayMode mode) throws LWJGLException {
+	public static void setDisplayModeAndFullscreen(DisplayMode mode) {
 		// TODO
 		System.out.println("TODO: Implement Display.setDisplayModeAndFullscreen(DisplayMode)");
 	}
 	
-	public static void setFullscreen(boolean fullscreen) throws LWJGLException {
+	public static void setFullscreen(boolean fullscreen) {
 		// TODO
 	}
 	
@@ -430,19 +425,19 @@ public class Display {
 		return false;
 	}
 	
-	public static void setParent(java.awt.Canvas parent) throws LWJGLException {
+	public static void setParent(java.awt.Canvas parent) {
 		// Do nothing as set parent not supported
 	}
 	
-	public static void releaseContext() throws LWJGLException {
+	public static void releaseContext() {
 		glfwMakeContextCurrent(0);
 	}
 	
-	public static boolean isCurrent() throws LWJGLException {
+	public static boolean isCurrent() {
 		return true;
 	}
 	
-	public static void makeCurrent() throws LWJGLException {
+	public static void makeCurrent() {
 		glfwMakeContextCurrent(Window.handle);
 	}
 	
